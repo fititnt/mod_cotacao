@@ -8,11 +8,10 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 ?>
-
 <div class="cotacao<?php echo $moduleclass_sfx; ?>">
-<?php 
-echo $modbefore;
-echo $c->getDolar(); 
-echo $modafter;
-?>
+    <?php echo $modbefore; ?>
+    <p><?php echo JText::_('MOD_COTACAO_DOLAR_DATA'); ?> <span class="cotacao-data"><?php echo $dolar->data; ?></span></p>
+    <p><?php echo JText::_('MOD_COTACAO_DOLAR_COMPRA'); ?> <span class="cotacao-compra"><?php echo $dolar->compra; ?></span></p>
+    <p><?php echo JText::_('MOD_COTACAO_DOLAR_VENDA'); ?> <span class="cotacao-venda"><?php echo $dolar->venda; ?></span></p>
+    <?php echo $modafter; ?>
 </div>

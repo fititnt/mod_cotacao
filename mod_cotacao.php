@@ -12,6 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 require_once dirname(__FILE__).'/helper.php';
 
 $c = new Cotacao;
+$dolar = $c->getDolar();
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx', NULL));
 $modbefore = htmlspecialchars_decode(($params->get('modbefore','')));

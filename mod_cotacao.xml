@@ -10,7 +10,7 @@
     <license>GNU General Public License version 3</license>
     <authorEmail>emerson@webdesign.eng.br</authorEmail>
     <authorUrl>http://fititnt.org</authorUrl>
-    <version>0.1alpha</version>
+    <version>0.1RC</version>
     <description>MOD_COTACAO_XML_DESCRIPTION</description>
     <files>
         <filename module="mod_cotacao">mod_cotacao.php</filename>
@@ -21,20 +21,18 @@
         <folder>tmpl</folder>
         <folder>languages</folder>
     </files>
-    <!--
     <languages folder="languages">
         <language tag="en-GB">en-GB/en-GB.mod_cotacao.ini</language>
         <language tag="en-GB">en-GB/en-GB.mod_cotacao.sys.ini</language>
     </languages>
-    -->
     <config>
         <fields name="params">
             <fieldset name="basic">
                 <field
                     name="moduleclass_sfx"
                     type="text"
-                    label="MOD_HORAEXATA_MODULECLASSSFX_LABEL"
-                    description="MOD_HORAEXATA_MODULECLASSSFX_DESC"
+                    label="MOD_COTACAO_MODULECLASSSFX_LABEL"
+                    description="MOD_COTACAO_MODULECLASSSFX_DESC"
                     default="">
                 </field>  
                 <field
@@ -42,16 +40,16 @@
                     type="textarea"
                     cols="45"
                     rows="8"
-                    label="MOD_HORAEXATA_MODBEFORE_LABEL"
-                    description="MOD_HORAEXATA_MODBEFORE_DESC">
+                    label="MOD_COTACAO_MODBEFORE_LABEL"
+                    description="MOD_COTACAO_MODBEFORE_DESC">
                 </field>
                 <field
                     name="modafter"
                     type="textarea"
                     cols="45"
                     rows="8"
-                    label="MOD_HORAEXATA_MODAFTER_LABEL"
-                    description="MOD_HORAEXATA_MODAFTER_DESC">
+                    label="MOD_COTACAO_MODAFTER_LABEL"
+                    description="MOD_COTACAO_MODAFTER_DESC">
                 </field> 
             </fieldset>
         </fields>

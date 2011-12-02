@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @package         mod_cotacao
  * @author          Emerson Rocha Luiz - emerson at webdesign.eng.br - fititnt
@@ -11,21 +12,54 @@ defined('_JEXEC') or die('Restricted access');
 class Cotacao {
 
     /**
+     * Funcao que faz scrapping da pagina do Banco Central do Brasil e pega
+     * especificamente a data, valor de compra e de venda do Dolar americano em
+     * relacao ao Real Brasileiro
      * 
-     * @return     
+     * @return object $dolar ($dolar->data, $dolar->compra, $dolar->venda)
      */
     public function getDolar() {
-        //...        
-        return $cotacao;
+        //Get page
+        $page = $this->_getUrlContents('http://www4.bcb.gov.br/pec/taxas/batch/taxas.asp?id=txdolar');
+        //Load DOM Page
+        $doc = new DOMDocument();
+        $doc->loadHTML($page);
+        //Load XPath
+        $xpath = new DOMXPath($doc);
+        //Querie
+        $dolar = new stdClass();
+        $dolar->data = NULL;
+        $dolar->compra = NULL;
+        $dolar->venda = NULL;
+
+        $queryResult = $xpath->query("//td[@class='fundoPadraoBClaro2'][1]");
+        if ($queryResult->length > 0) {
+            $node = $queryResult->item(0);
+            $dolar->data = $node->nodeValue;
+        }
+
+        $queryResult = $xpath->query("//td[@class='fundoPadraoBClaro2'][2]");
+        if ($queryResult->length > 0) {
+            $node = $queryResult->item(0);
+            $dolar->compra = $node->nodeValue;
+        }
+
+        $queryResult = $xpath->query("//td[@class='fundoPadraoBClaro2'][3]");
+        if ($queryResult->length > 0) {
+            $node = $queryResult->item(0);
+            $dolar->venda = $node->nodeValue;
+        }
+
+        return $dolar;
     }
 
     /**
-     * 
+     * @todo implementar esta funcao
      * @return     
      */
     public function getEuro() {
-        //...        
-        return $cotacao;
+        $euro = '';
+        return $euro;
     }
 
     /**
@@ -47,4 +81,23 @@ class Cotacao {
         return $content;
     }
 
+    /**
+     * Funcao que ajuda debugar DOMNodeList
+     * 
+     * @see http://www.php.net/manual/pt_BR/class.domxpath.php#87645
+     * @param DOMNodeList $elements 
+     */
+    private function _xpathDebug($elements) {
+        if (!is_null($elements)) {
+            foreach ($elements as $element) {
+                echo "<br/>[" . $element->nodeName . "] ";
+                $nodes = $element->childNodes;
+                foreach ($nodes as $node) {
+                    echo $node->nodeValue . "\n";
+                }
+            }
+        }
+    }
+
 }
+

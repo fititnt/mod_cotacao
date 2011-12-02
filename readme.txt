@@ -23,7 +23,14 @@ Dependences:
 
 -------------------------------------- Todo ------------------------------------
 
+ - Implementar cache
+ - Adicionar EUROs
+ - Documentar um pouco melhor
+ - Permitir mais opcoes de layout
+
 ----------------------------------- Changelog ----------------------------------
+2011-12-02: 1.0RC
+! Now it works for USD x BRL
 
 2011-12-02: 0.1alpha
 ! Created. Based on mod_horacerta from Emerson Rocha Luiz
